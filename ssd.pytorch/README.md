@@ -1,23 +1,3 @@
-# SSD: Single Shot MultiBox Object Detector, in PyTorch
-A [PyTorch](http://pytorch.org/) implementation of [Single Shot MultiBox Detector](http://arxiv.org/abs/1512.02325) from the 2016 paper by Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed, Cheng-Yang, and Alexander C. Berg.  The official and original Caffe code can be found [here](https://github.com/weiliu89/caffe/tree/ssd).
-
-
-<img align="right" src= "https://github.com/amdegroot/ssd.pytorch/blob/master/doc/ssd.png" height = 400/>
-
-### Table of Contents
-- <a href='#installation'>Installation</a>
-- <a href='#datasets'>Datasets</a>
-- <a href='#training-ssd'>Train</a>
-- <a href='#evaluation'>Evaluate</a>
-- <a href='#performance'>Performance</a>
-- <a href='#demos'>Demos</a>
-- <a href='#todo'>Future Work</a>
-- <a href='#references'>Reference</a>
-
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
 
 ## Installation
 - Install [PyTorch](http://pytorch.org/) by selecting your environment on the website and running the appropriate command.
@@ -79,11 +59,6 @@ wget https://s3.amazonaws.com/amdegroot-models/vgg16_reducedfc.pth
 python train.py
 ```
 
-- Note:
-  * For training, an NVIDIA GPU is strongly recommended for speed.
-  * For instructions on Visdom usage/installation, see the <a href='#installation'>Installation</a> section.
-  * You can pick-up training from a checkpoint by specifying the path as one of the training parameters (again, see `train.py` for options)
-
 ## Evaluation
 To evaluate a trained network:
 
@@ -94,24 +69,12 @@ python eval.py
 You can specify the parameters listed in the `eval.py` file by flagging them or manually changing them.  
 
 
-<img align="left" src= "https://github.com/amdegroot/ssd.pytorch/blob/master/doc/detection_examples.png">
-
 ## Performance
 
 #### VOC2007 Test
 
-##### mAP
-
-| Original | Converted weiliu89 weights | From scratch w/o data aug | From scratch w/ data aug |
-|:-:|:-:|:-:|:-:|
-| 77.2 % | 77.26 % | 58.12% | 77.43 % |
-
 ##### FPS
-**GTX 1060:** ~45.45 FPS
-
-## Demos
-
-### Use a pre-trained SSD network for detection
+**GTX 1060:** ~45.45 
 
 #### Download a pre-trained network
 - We are trying to provide PyTorch `state_dicts` (dict of weight tensors) of the latest SSD model definitions trained on different datasets.  
@@ -120,9 +83,7 @@ You can specify the parameters listed in the `eval.py` file by flagging them or 
       - https://s3.amazonaws.com/amdegroot-models/ssd300_mAP_77.43_v2.pth
     * SSD300 trained on VOC0712 (original Caffe weights)
       - https://s3.amazonaws.com/amdegroot-models/ssd_300_VOC0712.pth
-- Our goal is to reproduce this table from the [original paper](http://arxiv.org/abs/1512.02325)
-<p align="left">
-<img src="http://www.cs.unc.edu/~wliu/papers/ssd_results.png" alt="SSD results on multiple datasets" width="800px"></p>
+- Our goal is to reproduce this table from the [original paper](http://arxiv.org/abs/1512.
 
 ### Try the demo notebook
 - Make sure you have [jupyter notebook](http://jupyter.readthedocs.io/en/latest/install.html) installed.
@@ -150,24 +111,3 @@ jupyter notebook
 - Install the [imutils](https://github.com/jrosebr1/imutils) package to leverage multi-threading on CPU:
   * `pip install imutils`
 - Running `python -m demo.live` opens the webcam and begins detecting!
-
-## TODO
-We have accumulated the following to-do list, which we hope to complete in the near future
-- Still to come:
-  * [x] Support for the MS COCO dataset
-  * [ ] Support for SSD512 training and testing
-  * [ ] Support for training on custom datasets
-
-## Authors
-
-* [**Max deGroot**](https://github.com/amdegroot)
-* [**Ellis Brown**](http://github.com/ellisbrown)
-
-***Note:*** Unfortunately, this is just a hobby of ours and not a full-time job, so we'll do our best to keep things up to date, but no guarantees.  That being said, thanks to everyone for your continued help and feedback as it is really appreciated. We will try to address everything as soon as possible.
-
-## References
-- Wei Liu, et al. "SSD: Single Shot MultiBox Detector." [ECCV2016]((http://arxiv.org/abs/1512.02325)).
-- [Original Implementation (CAFFE)](https://github.com/weiliu89/caffe/tree/ssd)
-- A huge thank you to [Alex Koltun](https://github.com/alexkoltun) and his team at [Webyclip](http://www.webyclip.com) for their help in finishing the data augmentation portion.
-- A list of other great SSD ports that were sources of inspiration (especially the Chainer repo):
-  * [Chainer](https://github.com/Hakuyume/chainer-ssd), [Keras](https://github.com/rykov8/ssd_keras), [MXNet](https://github.com/zhreshold/mxnet-ssd), [Tensorflow](https://github.com/balancap/SSD-Tensorflow)
